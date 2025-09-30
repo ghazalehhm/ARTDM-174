@@ -99,7 +99,7 @@ function fmt(d){
   return new Date(d).toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
 }
 
-/* Media block (simple) */
+/* Media block  */
 function mediaMarkup(item){
   if(item.video){
     return '' +
@@ -180,7 +180,7 @@ function applyFilters(){
   });
 }
 
-/* ===== Video previews (no advanced APIs) ===== */
+/* ===== Video previews ===== */
 function wireVideoPreviews(){
   var vids = document.querySelectorAll('.thumb-wrap video');
   for (var i=0; i<vids.length; i++){
@@ -265,7 +265,7 @@ window.addEventListener('DOMContentLoaded', function(){
     }
   }
 
-  // Menu → filter + scroll (simple)
+  // Menu → filter + scroll 
   var typeSelect = document.getElementById('type');
 
   var navProjects = document.getElementById('nav-projects');
