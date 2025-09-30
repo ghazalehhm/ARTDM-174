@@ -1,0 +1,119 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Patua+One&display=swap");
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { display: block; }
+
+body {
+  font-family: Lato, system-ui, Arial, sans-serif;
+  background: #111;
+  color: #e9e9e9;
+  line-height: 1.5;
+}
+html { scroll-behavior: smooth; }
+
+.site-header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;      
+  gap:.75rem;
+  padding:.9rem 1rem .6rem;  
+  background:#40E0D0;
+  border-bottom:1px solid #00CED1;
+}
+
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  width:100%;
+  max-width:1200px;         
+  margin:0 auto;
+}
+.brand h1{ margin:0; }
+
+
+.site-nav{
+  width:100%;
+  background:#2b2b2b;
+  border-radius:8px;
+}
+.site-nav > ul{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  margin:0;
+  padding:.6rem 1rem;
+  max-width:1200px;          
+  list-style:none;           
+  margin-inline:auto;        
+}
+.site-nav li{ list-style:none; }     
+.site-nav a{
+  color:#cfcfcf;
+  text-decoration:none;
+  font-weight:600;
+}
+.site-nav a:hover{ text-decoration:underline; }
+
+
+@media (max-width:700px){
+  .site-nav > ul{
+    gap:.5rem;
+    padding:.5rem .75rem;
+  }
+}
+
+
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
+  gap: 12px;
+  padding: 12px;
+  grid-auto-flow: dense;                                        
+}
+.card{
+  background: #1a1a1a;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                                          
+}
+
+.card-text{
+  background: #000;
+  color: #fff;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  aspect-ratio: auto;                                           
+}
+.card-text h2{
+  font-family: "Patua One", serif;
+  margin: 0 0 .75rem 0;
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+}
+.card-text p{ margin: 0 0 .9rem 0; }
+
+
+@media (min-width: 900px){
+  .card-text{
+    grid-column: 2 / span 2; 
+    grid-row: span 2;        
+  }
+}
+
+/* Footer */
+.site-footer{
+  text-align: center;
+  color: #9a9a9a;
+  padding: 1rem 0 2rem;
+}

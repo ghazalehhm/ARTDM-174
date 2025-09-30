@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Ghazal-X — Digital Marketing That Moves</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#0b1321; --card:#111827;
+    --text:#e5e7eb; --muted:#9ca3af; --accent:#22d3ee;
+  }
+  body{
+    margin:0; font-family:system-ui, sans-serif; color:var(--text);
+    background: radial-gradient(1200px 600px at 20% -10%, #10203f, #0a1220 45%, #071120 80%), var(--bg);
+  }
+
+  /* ---------- PAGE LOAD ANIMATION (Keyframes: fade, blur, slide) ---------- */
+  .page{ width:min(1080px,92%); margin:0 auto 72px; animation:heroIn 2.6s ease-out both; }
+  @keyframes heroIn{
+    0%{opacity:0; filter:blur(14px); translate:0 18px}
+    45%{opacity:.7; filter:blur(8px); translate:0 8px}
+    100%{opacity:1; filter:blur(0); translate:0 0}
+  }
+
+  /* ---------- HEADER + NAV (Transitions on hover) ---------- */
+  header{ position:sticky; top:0; z-index:10; backdrop-filter:blur(8px);
+          background:rgba(7,17,32,.55); border-bottom:1px solid rgba(255,255,255,.06); }
+  .wrap{ width:min(1080px,92%); margin:0 auto; padding:14px 0;
+         display:flex; align-items:center; justify-content:space-between; }
+  .brand{font-weight:700}
+  nav a{ display:inline-block; padding:8px 12px; margin-left:8px; border-radius:10px; color:var(--text);
+         transition: background-color .25s ease, color .25s ease, translate .25s ease; }
+  nav a:hover{ background:rgba(34,211,238,.12); color:var(--accent); translate:0 -2px; }
+
+  /* ---------- HERO SECTION ---------- */
+  .hero{ margin:40px 0 22px; padding:48px 24px; border:1px solid rgba(255,255,255,.06);
+         border-radius:16px; background:linear-gradient(135deg,#0b1321,#111827);
+         box-shadow:0 18px 40px rgba(0,0,0,.35); }
+  .eyebrow{color:var(--accent); font-weight:700; letter-spacing:.06em; text-transform:uppercase}
+  .hero h1{ margin:6px 0 8px; font-size:clamp(32px,5vw,52px); line-height:1.08 }
+  .hero p{ margin:0; color:var(--muted) }
+  .btn{ display:inline-block; margin-top:20px; padding:12px 16px; border-radius:12px;
+        background:rgba(34,211,238,.15); border:1px solid rgba(34,211,238,.4); color:var(--text);
+        transition: background-color .25s ease, border-color .25s ease, translate .25s ease, scale .25s ease; }
+  .btn:hover{ background:rgba(34,211,238,.28); border-color:rgba(34,211,238,.7); translate:0 -2px; scale:1.02 }
+
+  /* ---------- SERVICES GRID (Grid Areas + Grid Lines) ---------- */
+  .section-title{margin:26px 0 10px}
+  .grid{
+    display:grid; gap:16px;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-areas:
+      "seo social content"
+      "analytics analytics content";
+  }
+  .card{ background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:18px;
+         box-shadow:0 12px 24px rgba(0,0,0,.28); opacity:0; translate:0 14px; animation:cardIn .8s ease-out forwards; }
+  .card:nth-child(1){animation-delay:.12s}
+  .card:nth-child(2){animation-delay:.24s}
+  .card:nth-child(3){animation-delay:.36s}
+  .card:nth-child(4){animation-delay:.48s}
+
+  /* area assignment + grid lines */
+  .seo{grid-area:seo}
+  .social{grid-area:social}
+  .content{grid-area:content}
+  .analytics{grid-area:analytics; grid-column: span 2;} /* uses grid lines */
+
+  .card h3{margin:0 0 6px}
+  .badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; color:#062a30; background:#22d3ee; margin-bottom:6px}
+
+  @keyframes cardIn{
+    0%{opacity:0; translate:0 14px}
+    60%{opacity:.9; translate:0 2px}
+    100%{opacity:1; translate:0 0}
+  }
+
+  /* ---------- ASSIGNMENT LINKS (Transitions on hover) ---------- */
+  .assign{ margin:18px 0 0 }
+  .assign a{ display:inline-block; margin-right:10px; padding:6px 10px; border-radius:8px; color:var(--text);
+             border:1px solid rgba(255,255,255,.1);
+             transition: background-color .25s ease, color .25s ease, translate .25s ease; }
+  .assign a:hover{ background:rgba(34,211,238,.12); color:var(--accent); translate:0 -2px; }
+
+  /* ---------- ACCESSIBILITY: Reduced Motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation:none !important; transition:none !important }
+  }
+</style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="wrap">
+      <div class="brand">Ghazal-X</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#work">Case Studies</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE -->
+  <div class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="eyebrow">Digital Marketing Agency</div>
+      <h1>Boost Your Brand with Data-Driven Growth</h1>
+      <p>SEO, paid ads, content strategy, and analytics—all in one team. Entry animation: fade → un-blur → slide-in.</p>
+      <a class="btn" href="#contact">Get a Free Audit</a>
+    </section>
+
+    <!-- SERVICES GRID -->
+    <h2 id="services" class="section-title">Our Services</h2>
+    <section class="grid">
+      <article class="card seo">
+        <span class="badge">SEO</span>
+        <h3>Search Optimization</h3>
+        <p>Keyword research, technical optimization, link building, and organic traffic growth.</p>
+      </article>
+      <article class="card social">
+        <span class="badge">Social Ads</span>
+        <h3>Paid Social Campaigns</h3>
+        <p>Meta, Instagram, and TikTok — fast creative + budget optimization with target ROAS.</p>
+      </article>
+      <article class="card content">
+        <span class="badge">Content</span>
+        <h3>Content Marketing</h3>
+        <p>Content calendars, conversion-driven landing pages, and email marketing.</p>
+      </article>
+      <article class="card analytics">
+        <span class="badge">Analytics</span>
+        <h3>Measurement & CRO</h3>
+        <p>GA4/Tag Manager, KPI dashboards, and A/B testing for conversion rate optimization.</p>
+      </article>
+    </section>
+
+    <!-- ASSIGNMENT LINKS -->
+    <section class="assign" aria-labelledby="asgn">
+      <h3 id="asgn">Assignment Links</h3>
+      <a href="https://medium.muz.li/" target="_blank" rel="noopener">Muzli Inspirations</a>
+      <a href="https://dribbble.com/shots/popular/animation" target="_blank" rel="noopener">Dribbble Animations</a>
+    </section>
+  </div>
+</body>
+</html>
