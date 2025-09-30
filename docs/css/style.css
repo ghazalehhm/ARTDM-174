@@ -1,12 +1,12 @@
 /* ===== Dark (Monochrome) theme — natural media ===== */
 :root{
-  --bg:#0b0b0c;          /* پس‌زمینه‌ی تیره */
-  --panel:#121214;       /* سطوح/پنل */
-  --card:#151517;        /* کارت‌ها */
-  --text:#f5f5f5;        /* متن روشن */
-  --muted:#a8a8a8;       /* متن فرعی */
-  --border:#262626;      /* خطوط */
-  --accent:#ffffff;      /* لینک/تأکیدی روشن */
+  --bg:#0b0b0c;         
+  --panel:#121214;      
+  --card:#151517;        
+  --text:#f5f5f5;        
+  --muted:#a8a8a8;     
+  --border:#262626;    
+  --accent:#ffffff;      
   --ring:0 0 0 3px rgb(255 255 255 / .18);
   --radius:18px;
 }
@@ -48,12 +48,12 @@ a:hover{text-decoration:underline}
 .meta-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;color:#d6d6d6}
 .meta-links a{color:#eaeaea}
 .meta-links a {
-  color: #e57373;       /* قرمز کمرنگ */
+  color: #e57373;      
   transition: color 0.3s ease;
 }
 
 .meta-links a:hover {
-  color: #d32f2f;       /* قرمز پررنگ */
+  color: #d32f2f;       
 }
 
 
