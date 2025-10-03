@@ -99,7 +99,7 @@ function fmt(d){
   return new Date(d).toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
 }
 
-/* Media block */
+/* Media block (simple) */
 function mediaMarkup(item){
   if(item.video){
     return '' +
