@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- page meta + assets -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Gallery — Thumbnails + Lightbox (Lab 4)</title>
+  <meta name="description" content="Progressive gallery: base figures + enhanced thumbnails + lightbox."/>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="page">
+
+    <!-- header -->
+    <header>
+      <h1>Gallery — Minooism Works</h1>
+      <p class="lead">Base figures (fallback). JS builds thumbnails + lightbox.</p>
+    </header>
+
+    <!-- base gallery (fallback if JS off) -->
+    <section id="gallery-base" class="base-gallery" aria-label="Artworks">
+      <figure data-category="calligraphy">
+        <img src="images/p1.jpg" alt="Abstract Persian calligraphy with orange strokes on blue background" loading="lazy">
+        <figcaption>
+          <strong>Dependency</strong><br>
+          Bold orange strokes on blue; tension between independence and bonds.
+        </figcaption>
+      </figure>
+
+      <figure data-category="calligraphy">
+        <img src="images/p2.jpg" alt="Calligraphy composition with black, white and gold tones" loading="lazy">
+        <figcaption>
+          <strong>Journey</strong><br>
+          Personal growth through abstract movement, calligraphic feel.
+        </figcaption>
+      </figure>
+
+      <figure data-category="calligraphy">
+        <img src="images/p3.jpg" alt="Red calligraphy strokes over textured background" loading="lazy">
+        <figcaption>
+          <strong>The Hidden Secret</strong><br>
+          Hidden forms emerging from texture; look deeper.
+        </figcaption>
+      </figure>
+
+      <figure data-category="calligraphy">
+        <img src="images/p4.jpg" alt="Colorful calligraphy on red and purple watercolor background" loading="lazy">
+        <figcaption>
+          <strong>Silent War</strong><br>
+          Internal battles, layered motion, contrast.
+        </figcaption>
+      </figure>
+
+      <figure data-category="calligraphy">
+        <img src="images/p5.jpg" alt="Golden sunburst with Persian calligraphy patterns" loading="lazy">
+        <figcaption>
+          <strong>Sagakhane</strong><br>
+          Contemporary abstraction + sacred motifs.
+        </figcaption>
+      </figure>
+
+      <figure data-category="abstract">
+        <img src="images/p6.png" alt="Abstract art with green, white, and red ink patterns" loading="lazy">
+        <figcaption>
+          <strong>Essence of Iran</strong><br>
+          Layers of green/white/red; organic flow.
+        </figcaption>
+      </figure>
+
+      <figure data-category="calligraphy">
+        <img src="images/p7.png" alt="Black calligraphy on golden background" loading="lazy">
+        <figcaption>
+          <strong>Golden Pulse</strong><br>
+          Rhythmic energy; bold strokes on gold.
+        </figcaption>
+      </figure>
+
+      <figure data-category="calligraphy">
+        <img src="images/p8.png" alt="Calligraphy on a cosmic abstract background" loading="lazy">
+        <figcaption>
+          <strong>Saffron Flow</strong><br>
+          Layers of gold/blue; grounding + uplift.
+        </figcaption>
+      </figure>
+
+      <figure data-category="calligraphy">
+        <img src="images/p9.png" alt="Golden calligraphy strokes on blue watercolor background" loading="lazy">
+        <figcaption>
+          <strong>Golden Echoes</strong><br>
+          Waves of memory/time in soft gold.
+        </figcaption>
+      </figure>
+
+      <figure data-category="abstract">
+        <img src="images/p10.png" alt="Persian calligraphy with red and green abstract background" loading="lazy">
+        <figcaption>
+          <strong>Liberation</strong><br>
+          Freedom, pride, inner awakening.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- no-js note -->
+    <noscript>
+      <p class="lead">JavaScript is off → showing base gallery only.</p>
+    </noscript>
+
+    <!-- enhanced mount (JS fills here) -->
+    <section id="enhanced" aria-live="polite" aria-busy="true"></section>
+  </div>
+
+  <!-- lightbox root (JS injects panel) -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Artwork preview"></div>
+</body>
+</html>
