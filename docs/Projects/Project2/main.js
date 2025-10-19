@@ -1,17 +1,4 @@
-/* ===========================================
-   Wonders of the World — main.js
-   Author: Ghazaleh Moghaddam (student)
-   What this file does:
-   - Progressive enhancement: turns each .album grid into a slider
-   - Autoplay starts on page load; stops on any user interaction
-   - Captions stay in sync with the current slide
-   - Cross-fade transition between slides
-   - Bonus: top nav links toggle album visibility (instead of just jump)
-   Required HTML structure (already in index.html):
-   <section id="ancient"><div class="album">…<figure>…</figure></div></section>
-   =========================================== */
 
-(() => {
   // Convenience selectors
   const $  = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
