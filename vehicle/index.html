@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vehicle Constructor</title>
+</head>
+<body>
+  <h2>Check the Console for Results!</h2>
+
+  <script>
+    function Vehicle(vehicle_type, weight, current_speed, fuel_amount) {
+      this.vehicle_type = vehicle_type;
+      this.weight = weight;
+      this.current_speed = current_speed;
+      this.fuel_amount = fuel_amount;
+
+      this.getSpeed = function() {
+        return this.current_speed;
+      };
+
+      this.setSpeed = function(newSpeed) {
+        this.current_speed = newSpeed;
+      };
+
+      this.speedUp = function(amount) {
+        this.current_speed += amount;
+        console.log(this.vehicle_type + " speeds up to " + this.current_speed + " km/h");
+      };
+
+      this.slowDown = function(amount) {
+        this.current_speed -= amount;
+        if (this.current_speed < 0) this.current_speed = 0;
+        console.log(this.vehicle_type + " slows down to " + this.current_speed + " km/h");
+      };
+    }
+
+    // Create instance and test methods
+    let myCar = new Vehicle("Car", 1500, 60, 40);
+    console.log(myCar.getSpeed()); // 60
+    myCar.speedUp(20);             // Car speeds up to 80 km/h
+    myCar.slowDown(30);            // Car slows down to 50 km/h
+  </script>
+</body>
+</html>

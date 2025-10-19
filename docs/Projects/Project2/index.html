@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wonders of the World — Photo Gallery</title>
+  <meta name="description" content="A progressively enhanced gallery with albums and a featured MP4 video with multi-language subtitles." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark js-enabled">
+  <!-- ================= Header ================= -->
+  <header class="site-header">
+    <h1>Wonders of the World</h1>
+    <nav aria-label="Album navigation" class="tabs">
+      <a href="#ancient">Ancient</a>
+      <a href="#natural">Natural</a>
+      <a href="#iconic">Iconic</a>
+    </nav>
+  </header>
+
+  <!-- ================= Main ================= -->
+  <main id="gallery">
+
+    <!-- ========== Album 1: Ancient Wonders ========== -->
+    <section id="ancient" aria-labelledby="ancient-title">
+      <h2 id="ancient-title">Ancient Wonders</h2>
+      <div class="album">
+        <figure>
+          <img src="images/Ancient/TajMahal.jpg" alt="Taj Mahal at sunrise" loading="lazy" decoding="async">
+          <figcaption>Taj Mahal — India. “Love immortalized in marble.”</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/Ancient/Petra2.jpg" alt="Petra, Jordan" loading="lazy" decoding="async">
+          <figcaption>Petra — Jordan. “Carved into rose-red cliffs.”</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/Ancient/Angkor Wat.jpg" alt="Angkor Wat, Cambodia" loading="lazy" decoding="async">
+          <figcaption>Angkor Wat — Cambodia. “Temple of dawn and devotion.”</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/Ancient/Colosseum.jpg" alt="Colosseum, Italy" loading="lazy" decoding="async">
+          <figcaption>Colosseum — Rome, Italy. “Echoes of glory and time.”</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/Ancient/Stonehenge.jpg" alt="Stonehenge, England" loading="lazy" decoding="async">
+          <figcaption>Stonehenge — England. “Mystery of stones and stars.”</figcaption>
+        </figure>
+        <!-- بقیهٔ تصاویر همین الگو -->
+      </div>
+    </section>
+
+    <!-- ========== Album 2: Natural Wonders ========== -->
+    <section id="natural" aria-labelledby="natural-title">
+      <h2 id="natural-title">Natural Wonders</h2>
+      <div class="album">
+        <figure>
+          <img src="images/Natural/Mount Fuji.jpg" alt="Mount Fuji, Japan" loading="lazy" decoding="async">
+          <figcaption>Mount Fuji — Japan. “Grace in symmetry.”</figcaption>
+        </figure>
+        <figure>
+          <img src="images/Natural/Iguazu Falls.jpg" alt="Iguazu Falls, Argentina/Brazil" loading="lazy" decoding="async">
+          <figcaption>Iguazu Falls — Argentina/Brazil. “Nature’s grand symphony.”</figcaption>
+        </figure>
+        <figure>
+          <img src="images/Natural/Sahara Desert.jpg" alt="Sahara Desert, North Africa" loading="lazy" decoding="async">
+          <figcaption>Sahara Desert — “Endless sands of silence.”</figcaption>
+        </figure>
+        <!-- ادامه... -->
+      </div>
+    </section>
+
+    <!-- ========== Album 3: Iconic Modern Wonders ========== -->
+    <section id="iconic" aria-labelledby="iconic-title">
+      <h2 id="iconic-title">Iconic Modern Wonders</h2>
+      <div class="album">
+        <figure>
+          <img src="images/Iconic/Golden Gate Bridge.jpg" alt="Golden Gate Bridge, USA" loading="lazy" decoding="async">
+          <figcaption>Golden Gate Bridge — USA. “Suspended in fog and grace.”</figcaption>
+        </figure>
+        <figure>
+          <img src="images/Iconic/Eiffel Tower.avif" alt="Eiffel Tower, France" loading="lazy" decoding="async">
+          <figcaption>Eiffel Tower — France. “Steel poetry over Paris.”</figcaption>
+        </figure>
+        <figure>
+          <img src="images/Iconic/Sagrada Familia.jpg" alt="Sagrada Familia, Spain" loading="lazy" decoding="async">
+          <figcaption>Sagrada Familia — Spain. “A dream carved in stone.”</figcaption>
+        </figure>
+        <!-- ادامه... -->
+      </div>
+    </section>
+
+    <!-- ========== Featured Video (MP4 + captions) ========== -->
+    <section id="video" aria-labelledby="video-title">
+      <h2 id="video-title">Featured Video</h2>
+      <div class="video-frame">
+        <video id="featuredVideo" controls preload="auto" width="100%" height="480" poster="images/cover.jpg">
+          <source src="videos/p2.mp4" type="video/mp4">
+          <!-- توجه: اگر پوشه‌ات "subtitel" است، مسیرها را هماهنگ کن -->
+          <track src="subtitle/english.vtt" kind="subtitles" srclang="en" label="English" default>
+          <track src="subtitle/persian.vtt" kind="subtitles" srclang="fa" label="فارسی">
+          <track src="subtitle/french.vtt"  kind="subtitles" srclang="fr" label="Français">
+          <track src="subtitle/italian.vtt" kind="subtitles" srclang="it" label="Italiano">
+          <track src="subtitle/spanish.vtt" kind="subtitles" srclang="es" label="Español">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- Controls panel -->
+      <div class="controls-panel">
+        <fieldset>
+          <legend>Playback controls</legend>
+          <button id="vPlay">Play</button>
+          <button id="vPause">Pause</button>
+          <button id="vMute">Mute</button>
+          <button id="vUnmute">Unmute</button>
+          <div class="chapters">
+            <strong>Chapter links</strong>
+            <button id="vStart">Beginning</button>
+            <button id="vEnd">End</button>
+            <button id="vStats">Go to Statistics</button>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Select a video to watch</legend>
+          <select id="videoSelect">
+            <option value="videos/p2.mp4" selected>Wonders (mp4)</option>
+            <!-- <option value="videos/alt.mp4">Alternate</option> -->
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Select a caption/subtitle to read</legend>
+          <select id="ccSelect">
+            <option value="en" selected>English</option>
+            <option value="fa">فارسی</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+            <option value="es">Español</option>
+            <option value="off">Captions Off</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Playback speed</legend>
+          <div class="speeds">
+            <button id="rew6">&lt; rewind 6s</button>
+            <button id="ff6">fast forward &gt;&gt;</button>
+            <button id="slow">slo mo ▸ 0.5×</button>
+            <button id="normal">normal ▸ 1.0×</button>
+          </div>
+          <small>Note: rewind </small>
+        </fieldset>
+
+        <p><a href="#" id="toggleTranscript">Show Transcript</a></p>
+        <div id="transcript" hidden></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= Footer ================= -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Wonders of the World | Educational Project</p>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

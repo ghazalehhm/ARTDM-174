@@ -1,0 +1,226 @@
+/* ===============================
+   Wonders of the World – style.css
+   Author: Ghazaleh Moghadam
+   Purpose: Light-first, responsive gallery with optional dark theme and JS slider hooks.
+   =============================== */
+
+/* ---------- Design tokens (LIGHT) ----------
+   Centralized variables so colors/sizing are easy to maintain. */
+:root{
+  --bg:#f7f8fb; --text:#1b1b1b; --muted:#5b6570;
+  --card:#fff; --border:#e5e8ee; --accent:#ffaf00;
+  --container:960px; --radius:12px;
+  --shadow:0 4px 14px rgba(0,0,0,.08);
+  --shadow-lg:0 10px 22px rgba(0,0,0,.12);
+}
+
+/* ---------- Dark theme ----------
+   Progressive enhancement: toggled by adding .dark to <body>. */
+body.dark{
+  --bg:#0b0f14;
+  --text:#eaeef4;
+  --muted:#c2c8d0;
+  --border:#2a3340;
+  --accent:#ffca3a;
+}
+body.dark .slider-controls{ background:rgba(255,255,255,.05); border-color:#36414f; }
+body.dark .slider-controls .btn{ color:#111; }
+
+/* ---------- Reset & base ----------
+   Predictable sizing + smooth anchor scrolling. */
+*{ box-sizing:border-box; margin:0; padding:0; }
+html,body{
+  font:400 16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  scroll-behavior:smooth;
+}
+
+/* ---------- Page containers ----------
+   Constrain content width to feel like a real site. */
+header,main,footer{ max-width:var(--container); margin:0 auto; padding:0 16px; }
+
+/* ---------- Header (sticky, short) ----------
+   Keeps nav visible; subtle gradient for polish. */
+header{
+  position:sticky; top:0; z-index:20;
+  /* fixed: channel values must be 0-255 */
+  background: linear-gradient(180deg, rgba(255, 209, 102, 0.25), transparent);
+  backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--border);
+  padding:22px 16px 14px;
+}
+header h1{ margin:0; font-size:clamp(28px,4vw,40px); letter-spacing:-.5px; }
+/* Tagline injected with pseudo-element to avoid extra markup */
+header h1::after{
+  content:"Ancient, Natural, and Iconic wonders — curated gallery";
+  display:block; margin-top:4px; font-size:.95rem; color:var(--muted); font-weight:500;
+}
+
+/* ---------- Pill navigation ----------
+   Clickable section shortcuts; .is-active is set by JS if needed. */
+nav a{
+  display:inline-block; padding:8px 14px; margin-left:8px; border-radius:999px;
+  background:rgba(255,175,0,.12); color:var(--accent); font-weight:600;
+  text-decoration:none; transition:background .18s, transform .18s;
+}
+nav a:hover{ background:rgba(255,175,0,.18); transform:translateY(-1px); }
+nav a.is-active{ background:var(--accent); color:#111; }
+
+/* ---------- Section titles ----------
+   Small accent bar to group content visually. */
+h2{ position:relative; padding-left:14px; margin:28px 0 12px; font-size:clamp(20px,3vw,28px); }
+h2::before{ content:""; position:absolute; left:0; top:.35em; width:6px; height:1.1em; border-radius:4px; background:var(--accent); }
+
+/* ---------- Album grid (no JS) ----------
+   Progressive: all images stay visible when JS is off. */
+.album{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin:18px 0 36px; }
+@media (max-width:640px){ .album{ grid-template-columns:1fr; } }        /* 1 col on small screens */
+@media (min-width:1200px){ .album{ grid-template-columns:repeat(3,1fr); } } /* 3 cols on wide */
+
+/* ---------- Figure card ----------
+   Clean cards with gentle elevation; square crops for consistency. */
+figure{
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow);
+  transition:transform .18s, box-shadow .18s, border-color .18s;
+}
+figure:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+figure img{ display:block; width:100%; aspect-ratio:1/1; object-fit:cover; image-rendering:auto; }
+figcaption{ padding:10px 12px 14px; color:var(--muted); font-size:.92rem; text-align:center; font-style:italic; }
+
+/* ---------- Footer ---------- */
+footer{
+  color:var(--muted); font-size:.9rem; padding:24px 0 36px;
+  border-top:1px solid var(--border); text-align:center;
+}
+
+/* ---------- Accessible focus ----------
+   High-contrast focus ring on interactive elements. */
+a:focus-visible,button:focus-visible,figure:focus-within{
+  outline:3px solid var(--accent); outline-offset:2px;
+}
+
+/* ---------- Usability tweaks ---------- */
+section{ scroll-margin-top:80px; }               /* prevent sticky header overlap on #hash jumps */
+@media (max-width:420px){ figcaption{ font-size:.88rem; } }  /* small caption type on tiny screens */
+.js-enabled section[hidden]{ display:none!important; }       /* bonus: allow JS to swap full albums */
+
+/* ======================================================
+   SLIDER (JS-enhanced)
+   When JS upgrades an album to a slideshow:
+   - disable the grid
+   - show one slide at a time with cross-fade
+   - cap stage height so controls remain visible
+   ====================================================== */
+.album.is-slider{ display:block; }               /* turn off grid in slider mode */
+
+/* Stage: bounded height so images aren’t gigantic */
+.slider-stage{
+  position:relative;
+  width:100%;
+  height:clamp(260px, 38vh, 480px);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  background: radial-gradient(circle at center, #000 70%, #0b0f14 100%);
+}
+
+/* Slides: stacked and faded via opacity */
+.slider-stage .slide{ position:absolute; inset:0; opacity:0; transition:opacity .6s ease; }
+.slider-stage .slide.is-active{ opacity:1; }
+
+/* Slide images fill the stage (choose cover vs contain as you prefer) */
+.slider-stage .slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* change to 'contain' if you want full image without cropping */
+  background:#000;
+}
+
+/* Controls: next/prev + live caption area */
+.slider-controls{
+  display:flex; align-items:center; gap:12px; justify-content:center;
+  margin-top:10px;
+  padding:8px 12px;
+  background:color-mix(in srgb, var(--card) 85%, transparent);
+  border:1px solid var(--border);
+  border-radius:12px;
+  width:max-content;
+  margin-inline:auto;
+}
+.slider-controls .btn{
+  appearance:none;
+  border:1px solid var(--border);
+  background:var(--accent);
+  color:#111;
+  font-weight:700;
+  font-size:14px;
+  line-height:1;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  transition: background .25s ease, transform .25s ease, filter .25s ease;
+}
+.slider-controls .btn:hover{ filter:brightness(0.95); transform:translateY(-1px); }
+.slider-controls .btn:active{ transform:translateY(0); }
+.slider-controls .btn:focus-visible{ outline:2px solid #fff; outline-offset:2px; }
+
+/* ---------- Featured video container ---------- */
+#video{
+  max-width:960px;
+  margin:40px auto;
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  background:var(--card);
+  transition: box-shadow .3s ease, transform .3s ease;
+}
+#video:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 25px rgba(0,0,0,.2);
+}
+/* Maintain 16:9 aspect ratio */
+#video video{
+  width:100%;
+  aspect-ratio:16/9;
+  display:block;
+  background:#000;
+  border:none;
+}
+/* Optional: Dark mode adjustments */
+body.dark #video{
+  background:#111;
+  box-shadow:0 8px 20px rgba(0,0,0,.6);
+}
+
+/* ---------- Video controls panel (optional) ---------- */
+.controls-panel{
+  background:#101316;
+  color:#e9eef3;
+  border-radius:10px;
+  padding:12px 14px;
+  margin-top:10px;
+  box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+.controls-panel fieldset{
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;
+  padding:10px;
+  margin:10px 0;
+}
+.controls-panel legend{ padding:0 6px; opacity:.9; }
+.controls-panel button,
+.controls-panel select{
+  background:#242a2f;
+  color:#e9eef3;
+  border:none;
+  padding:6px 10px;
+  border-radius:6px;
+  margin:4px;
+  cursor:pointer;
+}
+.controls-panel button:hover,
+.controls-panel select:hover{ background:#2e363d; }
+.controls-panel .chapters{ margin-top:6px; }
+#transcript{ margin-top:6px; line-height:1.6; color:#d7dde3; }
