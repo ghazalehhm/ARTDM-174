@@ -103,7 +103,7 @@
     albumEl.addEventListener('pointerenter', () => { wasAutoOnHover = autoplay; stopAutoplay(); });
     albumEl.addEventListener('pointerleave', () => { if (wasAutoOnHover) startAutoplay(); });
 
-    stage.style.aspectRatio = '1 / 1';
+    stage.style.aspectRatio = '16/ 9';
   }
 
   /* -------- Nav Switcher -------- */
