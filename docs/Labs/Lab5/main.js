@@ -19,7 +19,7 @@ document.getElementById('aForward').onclick = () => {
 document.getElementById('aSlow').onclick    = () => { a.playbackRate = 0.5; };
 document.getElementById('aNormal').onclick  = () => { a.playbackRate = 1; };
 
-// Example: change background at 10 s
+// Example: change background at 5 s
 v.addEventListener('timeupdate', () => {
   if (v.currentTime >= 5 && v.currentTime < 12) {
     document.body.style.backgroundColor = '#6994cdff';
