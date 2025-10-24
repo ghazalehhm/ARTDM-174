@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lab 5: Audio & Video</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Lab 5 – Audio and Video</h1>
+    <p>Custom Media Player with captions and controls</p>
+  </header>
+
+  <main>
+    <!-- === Video === -->
+   <section id="video-section">
+  <h2>Featured Video</h2>
+  <video id="myVideo" controls preload="auto" width="100%" height="480" poster="poster.jpg">
+    <source src="videos/p2.mp4" type="video/mp4">
+    <track src="subtitle/english.vtt" kind="subtitles" srclang="en" label="English" default>
+    <track src="subtitle/persian.vtt" kind="subtitles" srclang="fa" label="فارسی">
+    <track src="subtitle/french.vtt" kind="subtitles" srclang="fr" label="Français">
+    <track src="subtitle/italian.vtt" kind="subtitles" srclang="it" label="Italiano">
+    <track src="subtitle/spanish.vtt" kind="subtitles" srclang="es" label="Español">
+    Your browser does not support the video tag.
+  </video>
+
+      <div class="controls">
+        <button id="playBtn">Play</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="rewindBtn">&lt; Rewind 5 s</button>
+        <button id="forwardBtn">Forward 5 s &gt;</button>
+        <button id="slowBtn">Slow 0.5×</button>
+        <button id="normalBtn">Normal 1×</button>
+      </div>
+    </section>
+
+    <!-- === Audio === -->
+
+<section id="audio-section">
+  <h2>Featured Audio</h2>
+  <audio id="myAudio" controls preload="auto">
+    <source src="audio/just-relax-11157.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="controls">
+    <button id="aPlay">Play</button>
+    <button id="aPause">Pause</button>
+    <button id="aRewind">&lt; Rewind 5s</button>
+    <button id="aForward">Forward 5s &gt;</button>
+    <button id="aSlow">Slow 0.5×</button>
+    <button id="aNormal">Normal 1×</button>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Lab 5 | Audio & Video</p>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

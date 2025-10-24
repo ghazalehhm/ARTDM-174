@@ -17,7 +17,7 @@ const ITEMS = [
     due:'2025-10-18',
     status:'warn',
     desc:'Responsive gallery with accessibility and performance in mind.',
-    repo:'#', live:'#',
+    repo:'#', live:'https://ghazalehhm.github.io/ARTDM-174/Projects/Project2/',
     video:'videos/P2.mp4'
   },
   {
