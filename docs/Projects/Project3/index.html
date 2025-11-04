@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Dynamic Media Player -SEO Journey</title>
+        <!-- External stylesheet for layout and colors -->
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- === HEADER SECTION === --> 
+       <header class="site-header">
+        <h1>SEO in 5 Minutes — Interactive</h1>
+        <p class="nojs">If JavaScript is disabled, only the video will appear.</p> 
+    </header> 
+
+       <main id="app" class="layout">
+        <section class="player">
+            <!-- === VIDEO PLAYER (mounted by YouTube IFrame API) === -->
+            <div id="player" aria-label="SEO video"></div>
+          <!-- === MESSAGE BAR === -->
+           <div id="message" class="msgbar" aria-live="polite">Ready</div>
+            <!-- === CONTROLS (Play / Pause buttons) === -->
+            <div class="controls">
+                <button id="btnPlay" aria-controls="player" disabled>Play</button>
+                <button id="btnPause" aria-controls="player" disabled>Pause</button>
+            </div>
+            <!-- === PROGRESS BAR === -->
+            <div class="progress" aria-hidden="true">
+                <div id="progressFill" class="fill" style="width: 0%"></div>
+            </div>
+        </section>
+
+        <aside class="panel" aria-label="Teaching panel">
+            <div id="cards" class="cards"><!-- On-Page / Off-Page / Tools cards go here --></div>
+        </aside>
+       </main>
+
+       <footer class="site-footer">
+    <small>Video: “SEO in 5 Minutes” (YouTube) — for educational use</small>
+  </footer>
+
+  <!-- YouTube IFrame API must load before main.js -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+   <!-- JavaScript file for player controls and cue-points -->  
+  <script src="main.js" defer></script>
+  <noscript>Please enable JavaScript for the full experience.</noscript>
+
+    </body>
+</html>
+
