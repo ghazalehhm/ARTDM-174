@@ -26,24 +26,27 @@ function onYouTubeIframeAPIReady() {
         height: '315',
         width: '560',
         videoId: 'MYE6T_gd7H0',
-        events: {onRedy: onPlayerRedy, onStateChange: onPlayerStateChange 
+        events: {onReady: onPlayerReady, onStateChange: onPlayerStateChange 
+        },
+        playerVars: {
+            rel: 0, modestbranding: 1, playsinline: 1
         }
-    }) 
+    });
 }
 // ---- Ready ----
-function onPlayerRedy() {
+function onPlayerReady() {
     setMsg('Video loaded and ready');
     btnPlay.disabled =false;
     btnPause.disabled = false;
-    btnPlay.addEventListener('click', () => Player.PlayVideo());
+    btnPlay.addEventListener('click', () => Player.playVideo());
     btnPause.addEventListener('click', () => Player.pauseVideo());
 
 
 
     // Mark cue times while playing: press "M" to log current second in the console
   document.addEventListener('keydown', (e) => {
-    if (e.key.toLowerCase() === 'm' && player?.getCurrentTime) {
-      console.log('MARK @', Math.floor(player.getCurrentTime()), 'sec');
+    if (e.key.toLowerCase() === 'm' && typeof Player?.getCurrentTime === 'function') {
+      console.log('MARK @', Math.floor(Player.getCurrentTime()), 'sec');
     }
   });
 }
@@ -51,11 +54,15 @@ function onPlayerRedy() {
 function onPlayerStateChange(e) {
     switch (e.data) {
         case YT.PlayerState.PLAYING:
-            setMsg('playing...');
+            setMsg('Playing...');
             startTick();
             break;
+            case YT.PlayerState.PAUSED:
+                setMsg('Paused');
+                stopTick();
+                break;
             case YT.PlayerState.ENDED:
-                setMsg('finished');
+                setMsg('Finished');
                 stopTick();
                 finalizeProgress();
                 showCard('Next Steps', '1) Choose a Page 2) Keywords 3) On-Page 4) Speed 5) Backlinks');
@@ -69,9 +76,9 @@ function onPlayerStateChange(e) {
 function startTick() {
     stopTick();
     tick = setInterval(() => {
-        if (!player?.getCurrentTime) return;
-        const cur = Math.floor(player.getCurrentTime());
-        const due = Math.max(1, Math.floor(player.getDuration() || 1));
+        if (typeof Player?.getCurrentTime !== 'function') return;
+        const cur = Math.floor(Player.getCurrentTime() || 0);
+        const dur = Math.max(1, Math.floor(Player.getDuration() || 1));
         const pct = Math.min(100, Math.max(0, (cur / dur)*100));
         ProgressFill.style.width = pct +'%';
         manageCues(cur);
@@ -93,15 +100,20 @@ function showCard(title, body) {
     const id ='card-' +title.replace(/\s+/g, '-').toLowerCase();
     let card = document.getElementById(id);
     if (!card) {
-        card = document.getElementById('div');
+        card = document.createElement('div');
         card.className = 'card';
         card.id = id;
         cardsbox.appendChild(card);
     }
-    card.innerHTML = '<h3 class="card-title">${title}</h3><p class="card-body">${body}</p>';
+   card.innerHTML = `
+  <h3 class="card-title">${title}</h3>
+  <p class="card-body">${body}</p>
+`;
+
 }
 function highlightPanel(on){
-    if (on) cardsbox.classList.add('puls');
+    if (on) cardsbox.classList.add('pulse');
     else cardsbox.classList.remove('pulse');
 }
-function finalizeProgress(){ ProgressFill.style.width = '100';}
+function finalizeProgress(){
+     ProgressFill.style.width = '100%';}
