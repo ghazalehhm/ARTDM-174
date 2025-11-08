@@ -11,18 +11,48 @@ const ProgressFill  =document.getElementById('progressFill');
 const cardsbox  =document.getElementById('cards');
 // ---- Cue-points  ----
 const CUES = [
-  { t: 5,   run: () => setMsg('SEO = improving quality/quantity of organic traffic') },
-  { t: 20,  run: () => showCard('Benefits', 'Brand awareness, local reach, credibility—without direct ad spend') },
-  { t: 40,  run: () => showCard('On-Page SEO', 'Keywords in title/H1/URL, internal links, readable content') },
-  { t: 70,  run: () => showCard('Technical SEO', 'Schema, meta tags, speed, mobile-friendly, clean HTML structure') },
-  { t: 95,  run: () => showCard('Off-Page SEO', 'High-quality backlinks, mentions, domain authority') },
-  { t: 120, run: () => showCard('Tools', 'Google Ads KW Planner, Ahrefs/SEMrush for ideas/volume/difficulty') },
-  { t: 150, run: () => highlightPanel(true) },
-  { t: 170, run: () => { setMsg('Action: pick one page and apply the on-page checklist'); highlightPanel(false); } }
+  // Intro — Rahele's story begins
+  { t: 4, run: () => setMsg("Meet Rahele — a passionate baker starting her online journey.") },
+  { t: 10, run: () => showCard("The Beginning", "Rahele started her own bakery and began posting regularly on her blog.") },
+  { t: 20, run: () => showCard("The Challenge", "Despite her effort, very few visitors were showing up on her website.") },
+
+  // Discovering SEO
+  { t: 35, run: () => setMsg("One day, while searching for answers, she discovered SEO — Search Engine Optimization!") },
+  { t: 45, run: () => showCard("What is SEO?", "SEO helps improve the quality and quantity of visitors coming from search engines.") },
+  { t: 55, run: () => showCard("Why It Matters", "SEO builds awareness, local visibility, and credibility — all without paid ads!") },
+
+  // On-Page SEO
+  { t: 70, run: () => setMsg("Rahele decided to start with On-Page SEO.") },
+  { t: 80, run: () => showCard("On-Page SEO", "Optimizing website content and technical aspects like HTML, schema, and metadata.") },
+  { t: 95, run: () => showCard("Keyword Research", "She used tools like Google to find popular keywords related to her recipes.") },
+  { t: 110, run: () => showCard("Content Optimization", "Rahele wrote engaging introductions and naturally included her keywords.") },
+  { t: 125, run: () => showCard("Engaging Media", "She added photos, videos, and time-lapse clips to boost engagement and trust.") },
+
+  // Off-Page SEO
+  { t: 145, run: () => setMsg("After improving her site, she explored Off-Page SEO.") },
+  { t: 155, run: () => showCard("Off-Page SEO", "Actions taken outside her website to improve visibility and authority.") },
+  { t: 165, run: () => showCard("Building Backlinks", "Gaining credibility from reputable sites through backlinks and mentions.") },
+  { t: 175, run: () => showCard("Social Promotion", "Rahele shared her blog on Facebook, Twitter, Instagram, Reddit, and Medium.") },
+
+  // Quiz Section
+  { t: 195, run: () => showCard("Quick Quiz!", "Which is the best way to improve Off-Page SEO? 1) Create more pages 2) Get backlinks from relevant sites 3) None of the above.") },
+  { t: 205, run: () => setMsg("Let us know your answer in the comments below!") },
+
+  // Learning and Growth
+  { t: 215, run: () => showCard("Next Step", "Rahele joined a digital marketing certification to learn everything about SEO.") },
+  { t: 230, run: () => showCard("Results", "Soon, she implemented her knowledge and saw a massive rise in website visitors.") },
+  { t: 245, run: () => showCard("Future Plans", "With growing traffic, she could even start her own online shop!") },
+
+  // Conclusion
+  { t: 260, run: () => setMsg("And that’s how Rahele transformed her business with SEO!") },
+  { t: 270, run: () => showCard("The End", "SEO opened endless possibilities for Rahele — and it can do the same for you.") },
+  { t: 285, run: () => setMsg("Thank you for watching! Don’t forget to like, subscribe, and stay tuned for more.") },
+  { t: 300, run: () => highlightPanel(true) },
+  { t: 310, run: () => highlightPanel(false) }
 ];
-// ---- YouTube bootstrap (API calls this global function) ----
-function onYouTubeIframeAPIReady() {
-    Player = new YT.Player('player',{
+function onYouTubeIframeAPIReady(){
+    Player = new YT.Player('player', {
+
         height: '315',
         width: '560',
         videoId: 'MYE6T_gd7H0',
